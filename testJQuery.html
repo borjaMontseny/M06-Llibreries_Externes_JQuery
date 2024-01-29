@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exemple JQuery</title>
+    <style>
+        #container {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            left: 0px;
+            color: #ffffff;
+            line-height: 200px;
+            text-align: center;
+            font-size: 2em;
+            background: #db3e29;
+            cursor: pointer;
+        }
+
+        .on {
+            background: #2868e0 !important;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#container").click(move);
+        });
+
+        function move() {
+            var div = $("#container");
+            if (div.hasClass("on")) {
+                div.animate({
+                    left: '0px'
+                }, "fast");
+                div.animate({
+                    fontSize: '2em'
+                }, "fast");
+                div.text("OFF");
+            } else {
+                div.animate({
+                    left: '300px'
+                }, "slow", function () {
+                    div.text("ON");
+                });
+                div.animate({
+                    fontSize: '4em'
+                }, "slow");
+            }
+            div.toggleClass("on");
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">OFF</div>
+</body>
+
+</html>
